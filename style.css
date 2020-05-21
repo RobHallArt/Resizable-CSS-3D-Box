@@ -1,0 +1,117 @@
+/* /!\ You need to add vendor prefixes in order to render the CSS properly (or simply use http://leaverou.github.io/prefixfree/) /!\ I don't know what this means but it works */
+/*
+
+So you can change the numbers in root to rotate and resize the cube. I'm hoping that we can do this per-cube.
+In the last setup there were various pre-set rotation positions that could be selected...
+
+*/
+:root {
+    --w: 35em;
+    --h: 20em;
+    --d: 10em;
+    --rx: -30deg;
+    --ry: 30deg;
+    --rz: 15deg;
+  }
+  
+  #tridiv {
+    perspective: 800px;
+    position: absolute;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    font-size: 100%;
+  }
+  .face {
+    box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.4);
+  }
+  .scene, .shape, .face, .face-wrapper, .cr {
+    position: absolute;
+    transform-style: preserve-3d;
+  }
+  .scene {
+    width: 80em;
+    height: 80em;
+    top: 50%;
+    left: 50%;
+    margin: -50em 0 0 -50em;
+  }
+  .shape {
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    transform-origin: 50%;
+  }
+  .face, .face-wrapper {
+    overflow: hidden;
+    transform-origin: 0 0;
+    backface-visibility: hidden;
+    /* hidden by default, prevent blinking and other weird rendering glitchs */
+  }
+  .face {
+    background-size: 100% 100%!important;
+    background-position: center;
+  }
+  .face-wrapper .face {
+    left: 100%;
+    width: 100%;
+    height: 100%
+  }
+  .side {
+    left: 50%;
+  }
+  .cr, .cr .side {
+    height: 100%;
+  }
+  [class*="cuboid"] .ft, [class*="cuboid"] .bk {
+    width: 100%;
+    height: 100%;
+  }
+  [class*="cuboid"] .bk {
+    left: 100%;
+  }
+  [class*="cuboid"] .rt {
+    transform: rotateY(-90deg) translateX(-50%);
+  }
+  [class*="cuboid"] .lt {
+    transform: rotateY(90deg) translateX(-50%);
+  }
+  [class*="cuboid"] .tp {
+    transform: rotateX(90deg) translateY(-50%);
+  }
+  [class*="cuboid"] .bm {
+    transform: rotateX(-90deg) translateY(-50%);
+  }
+  [class*="cuboid"] .lt {
+    left: 100%;
+  }
+  [class*="cuboid"] .bm {
+    top: 100%;
+  }
+  /* .cub-1 styles */
+  .cub-1 {
+    transform:translate3D(0em, 0em, 0em) rotateX(var(--rx)) rotateY(var(--ry)) rotateZ(var(--rz));
+    opacity:1;
+    width:var(--w);
+    height:var(--h);
+    margin:-6.25em 0 0 -10em;
+  }
+  .cub-1 .ft {
+    transform:translateZ(calc(0.5 * var(--d)));
+  }
+  .cub-1 .bk {
+    transform:translateZ(calc(-0.5 * var(--d))) rotateY(180deg);
+  }
+  .cub-1 .rt, .cub-1 .lt {
+    width:var(--d);
+    height:var(--h);
+  }
+  .cub-1 .tp, .cub-1 .bm {
+    width:var(--w);
+    height:var(--d);
+  }
+  .cub-1 .face {
+    background-color:rgb(219, 0, 0);
+  }
