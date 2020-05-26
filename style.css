@@ -37,6 +37,17 @@ In the last setup there were various pre-set rotation positions that could be se
     left: 50%;
     margin: -50em 0 0 -50em;
   }
+
+  .shape:hover {
+    animation: moving 2s 1;
+  }
+
+  @keyframes moving{
+    0%  { --rx:-30deg;   }
+    50%  { --rx:30deg;   }
+    100%  { --rx:-30deg;   }
+  }
+
   .shape {
     top: 50%;
     left: 50%;
