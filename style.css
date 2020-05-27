@@ -130,7 +130,7 @@ to {transform:translateX(100%)};
 }
 /* .cub-1 styles, setting how big */
 .cub-1 {
-  transform:translate3D(0em, 0em, 0em) rotateX(var(random(--rx))) rotateY(var(--ry)) rotateZ(var(--rz));
+  transform:translate3D(0em, 0em, 0em) rotateX(var(--rx)) rotateY(var(--ry)) rotateZ(var(--rz));
   opacity:1;
   width:var(--w);
   height:var(--h);
